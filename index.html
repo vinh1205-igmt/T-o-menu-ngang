@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành Tạo Menu Ngang Dropdown</title>
+    <style>
+        /* 1. Thiết lập font chữ và reset khoảng cách mặc định */
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        /* 2. Cấu hình phân vùng cho menu chính (#menu) */
+        #menu {
+            height: 40px;
+            background-color: #333333;
+            border-bottom: 2px solid #111111;
+        }
+
+        #menu ul {
+            list-style: none; /* Bỏ ký hiệu đầu dòng */
+        }
+
+        /* 3. Định vị các phần tử menu cha nằm trên một hàng ngang */
+        #menu > ul > li {
+            float: left;        /* Đẩy các item nằm ngang */
+            position: relative; /* Cố định gốc tọa độ cho menu con */
+        }
+
+        /* 4. Định dạng các thẻ liên kết (a) trong menu */
+        #menu a {
+            display: block;
+            width: 140px;
+            height: 40px;
+            line-height: 40px;       /* Căn giữa chữ theo chiều cao */
+            text-align: center;
+            color: #ffffff;
+            text-decoration: none;   /* Bỏ gạch chân */
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        /* 5. Đổi màu nền sang màu đỏ khi di chuột qua liên kết (a:hover) */
+        #menu a:hover {
+            background-color: #e74c3c;
+        }
+
+        /* 6. Định vị và ẩn menu con (#menu ul ul) */
+        #menu ul ul {
+            position: absolute;
+            top: 40px;               /* Hiển thị ngay dưới thanh menu cha */
+            left: 0;
+            background-color: #444444;
+            visibility: hidden;      /* Ẩn mặc định các trình đơn con */
+            opacity: 0;
+            transition: visibility 0.2s, opacity 0.2s linear;
+        }
+
+        /* Định dạng riêng cho các li của menu con */
+        #menu ul ul li {
+            position: relative;
+            border-top: 1px solid #555555;
+        }
+
+        /* 7. Hiển thị menu con tương ứng khi di chuột vào mục chọn cha */
+        #menu ul:hover > li:hover > ul,
+        #menu li:hover > ul {
+            visibility: visible;     /* Hiện trình đơn con */
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="menu">
+        <ul>
+            <li><a href="#">Trang chủ</a></li>
+            <li>
+                <a href="#">Sản phẩm</a>
+                <ul>
+                    <li><a href="#">Điện thoại</a></li>
+                    <li><a href="#">Laptop</a></li>
+                    <li><a href="#">Máy tính bảng</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Dịch vụ</a>
+                <ul>
+                    <li><a href="#">Bảo hành</a></li>
+                    <li><a href="#">Sửa chữa</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Liên hệ</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>
